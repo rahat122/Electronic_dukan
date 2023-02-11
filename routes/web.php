@@ -5,7 +5,9 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +32,18 @@ Route::get('/logout-fron',[HomeController::class,'logoutFront'])->name('logout.f
 Route::get('/registration',[AuthController::class,'registrationForm'])->name('registration.form');
 Route::post('/registration-submit',[AuthController::class,'registrationSubmit'])->name('registration.submit');
 
-Route::get('/login',[AuthController::class,'loginForm'])->name('login.form');
+Route::get('/admin-login',[AuthController::class,'loginForm'])->name('login.form');
 Route::post('/login-submit',[AuthController::class,'loginSubmit'])->name('login.submit');
 
+
+Route::get('/cart',[CartController::class,'cartDetails'])->name('cart.details');
+Route::get('/add-cart{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
+Route::get('/cart-delete/{id}',[CartController::class,'deleteCart'])->name('delete.cart');
+
+
+
+
+Route::get('/search',[SearchController::class,'searchBar'])->name('search.bar');
 
 
 

@@ -46,7 +46,8 @@ class AuthController extends Controller
             
             return to_route('admin.newPage');
         } else {
-            return to_route('registration.form');
+            notify()->warning('user are not allow!');
+            return to_route('home');
         }
     }
 
@@ -54,6 +55,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        notify()->success('logout successfully!');
         return to_route('home');
     }
 

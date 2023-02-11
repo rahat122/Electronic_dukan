@@ -4,15 +4,35 @@
             <div class="head_top">
                <div class="container">
                   <div class="row">
+                    
+                  
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                        <div class="top-box">
                         <ul class="sociel_link">
+                        @if(auth()->user())
+                        <li><a href="{{route('cart.details')}}"> <i class="fa fa-shopping-bag"></i> <span> Cart({{session()->has('myCart')?count(session()->get('myCart')):0}})</span>
+                       </a></li>
+                       @endif
+                  
+                        
+                       
                          <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
                          <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                          <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
                          <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
                      </ul>
                     </div>
+                  </div>
+                  <div>
+                  <div class="hero__search__form">
+                            <form action="{{route('search.bar')}}">
+                  
+                                <input type="text" name = "search" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                         
+
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                        <div class="top-box">
@@ -41,13 +61,9 @@
                               <li> <a href="product.html">product</a> </li>
                               <li> <a href="blog.html"> Blog</a> </li>
                               <li> <a href="contact.html">Contact</a> </li> 
-                                 
-                           </ul>
-                           <div class="header__top__right__auth">
+                              
+                              <div class="header__top__right__auth">
                             @guest
-
-
-
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registration">
                                 Registration
                             </button>
@@ -64,6 +80,9 @@
                             @endauth
 
                         </div>
+                           </ul>
+                           
+                           
                         </nav>
                      </div>
                   </div>
@@ -89,20 +108,20 @@
   @csrf
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="text" name="name" id="form2Example1" class="form-control" />
     <label class="form-label" for="form2Example1">Name</label>
+    <input type="text" name="name" id="form2Example1" class="form-control" />
   </div>
 
 
   <div class="form-outline mb-4">
-    <input type="email" name="email" id="form2Example1" class="form-control" />
     <label class="form-label" for="form2Example1">Email address</label>
+    <input type="email" name="email" id="form2Example1" class="form-control" />
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" name="password" id="form2Example2" class="form-control" />
     <label class="form-label" for="form2Example2">Password</label>
+    <input type="password" name="password" id="form2Example2" class="form-control" />
   </div>
 
       <div class="modal-footer">
@@ -111,10 +130,7 @@
       </div>
 </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+       
     </div>
   </div>
 </div>
@@ -137,14 +153,14 @@
   @csrf
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" name="email" id="form2Example1" class="form-control" />
     <label class="form-label" for="form2Example1">Email address</label>
+    <input type="email" name="email" id="form2Example1" class="form-control" />
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
+  <label class="form-label" for="form2Example2">Password</label>
     <input type="password" name="password" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
   </div>
 
   <!-- 2 column grid layout for inline styling -->
@@ -168,6 +184,8 @@
         <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">submit</button>
       </div>
+
+      
 </form>
     </div>
   </div>

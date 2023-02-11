@@ -36,10 +36,12 @@
       <!-- end loader --> 
       <!-- header -->
       @includeIf('frontend.fixed.header')
+      
       <!-- end header -->
       <section id="home">
          @yield('contents')
          <x:notify-messages />
+         
       </section>
 
 
@@ -94,6 +96,7 @@
          });
          
       </script> 
-      @notifyJs
+      
+      @notifyJs 
    </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function Home(){
-        return view('frontend.page.home');
+        $Products = Product::all();
+        return view('frontend.page.home',compact('Products'));
     }
 
     public function registrationFront(Request $request){
@@ -29,7 +31,7 @@ class HomeController extends Controller
         $authentication=auth()->attempt($credentials);
         if($authentication){
             notify()->success('Login Successfully!');
-            if(auth()->user()){
+            if(auth()->user());{
                 
                 return to_route('home');
             }
@@ -43,6 +45,7 @@ class HomeController extends Controller
     public function logoutFront()
     {
         Auth::logout();
+        notify()->success('Logout Successfully!');
         return to_route('home');
     }
 
