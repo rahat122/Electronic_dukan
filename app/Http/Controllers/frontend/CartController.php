@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -61,5 +62,17 @@ class CartController extends Controller
 
         notify()->success('Item delete from cart');
         return redirect()->back();
+    }
+
+
+    public function upDate(Request $request,$id){
+        $myCart = session()->get('myCart');
+        $myCart[$id]["product_quantity"] = $request->qty;
+        $myCart[$id]['subtotal']=(float)($myCart[$id]['product_price']) * (int)($myCart[$id]['product_quantity']);
+        // dd( $myCart[$id]["product_quantity"]);
+
+        notify()->success('Cart updated successfully');
+        session()->put('myCart', $myCart);
+        return to_route("cart.details");
     }
 }

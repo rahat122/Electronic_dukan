@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label for="">Product Image</label>
-            <input type="file" name="products_image" class="form-control" placeholder="Image" required>
+            <input type="file" name="product_image" class="form-control" placeholder="Image" required>
         </div>
 
         <button type="submit " class="btn btn-primary">Submit</button>

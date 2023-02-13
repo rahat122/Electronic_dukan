@@ -1,6 +1,23 @@
 @extends('backend.master')
 @section('contents')
-<a class="btn btn-primary" href="{{route('product.create')}}">Create</a>
+<div class="row">
+    <div class="col-md-6">
+ <a class="btn btn-primary" href="{{route('product.create')}}">Create Product</a>
+    </div>
+    <div class="col-md-6">
+      <form action="{{route('product.list')}}" method="get">
+      <div class="row">
+       <div class="col-md-8"> 
+      <input class="form-control" type="text" placeholder="Search product" name="search">
+    </div>
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-primary">Search</button>
+      <button onclick="printReport()" type="button" class="btn btn-success">Print</button>
+    </div>
+    </form>
+</div>
+</div>
+
 <table class="table table-dark">
   <thead>
     <tr>

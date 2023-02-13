@@ -39,6 +39,7 @@ Route::post('/login-submit',[AuthController::class,'loginSubmit'])->name('login.
 Route::get('/cart',[CartController::class,'cartDetails'])->name('cart.details');
 Route::get('/add-cart{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
 Route::get('/cart-delete/{id}',[CartController::class,'deleteCart'])->name('delete.cart');
+Route::get('/cart-update/{id}',[CartController::class,'upDate'])->name('update.cart');
 
 
 

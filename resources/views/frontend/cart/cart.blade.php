@@ -24,23 +24,25 @@
 <section class="shoping-cart spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-sm-12">
                 <div class="shoping__cart__table">
 
-                    <table>
+                    <table class="w-100">
                         <thead>
                             <tr>
                                 <th class="shoping__product">Products</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (session()->has('myCart'))
 
                             @foreach (session()->get('myCart') as $key=>$cart)
+
+                            <form action="{{route('update.cart',$key)}}">
                             <tr>
                                 <td class="shoping__cart__item">
                                     <img width="60px" src="{{url('uploads/product', $cart['products_image'])}}" alt="">
@@ -52,7 +54,7 @@
                                 <td class="shoping__cart__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" value="{{$cart['product_quantity']}}">
+                                            <input type="text" name="qty" value="{{$cart['product_quantity']}}">
                                         </div>
                                     </div>
                                 </td>
@@ -62,7 +64,17 @@
                                 <td class="shoping__cart__item__close">
                                     <a class="btn btn-danger" href="{{route('delete.cart',$key)}}"><i class="icon-trash icon-large"></i> Delete</a>
                                 </td>
+
+                                 
+
+                                <td class="shoping__cart__item__close">
+                                    
+
+                                    <button class="btn btn-danger" type="submit">Update</button>
+                                </td>
+
                             </tr>
+                            </form>
                             @endforeach
                             @else
                             <p>Nothing in the cart</p>
@@ -97,8 +109,8 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal <span>$454.98</span></li>
-                        <li>Total <span>$454.98</span></li>
+                         
+                        <li>Total <span>{{array_sum(array_column($carts=session()->get('myCart'),'subtotal'))}}</span></li>
                     </ul>
                     <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>

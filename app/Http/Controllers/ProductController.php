@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function productList(){
-        $Products= Product::with('Categories')->get();
-        // dd($Products->all());
+        if(\request()->has('search')){
+            $search_key=request()->search;
+            $Products=Product::where('product_name','LIKE','%'.$search_key.'%')->get();
+        } else{
+            $Products=Product::all();
+        }
         return view('backend.page.product.productlist',compact('Products'));
 
         //return view('backend.page.product.productlist');
@@ -86,6 +90,4 @@ class ProductController extends Controller
         $Product=Product::find($id)->delete();
         return back();
     }
-
-
 }

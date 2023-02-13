@@ -13,9 +13,6 @@
                         <li><a href="{{route('cart.details')}}"> <i class="fa fa-shopping-bag"></i> <span> Cart({{session()->has('myCart')?count(session()->get('myCart')):0}})</span>
                        </a></li>
                        @endif
-                  
-                        
-                       
                          <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
                          <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                          <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -24,15 +21,13 @@
                     </div>
                   </div>
                   <div>
-                  <div class="hero__search__form">
+                  <div class="top-lef">
                             <form action="{{route('search.bar')}}">
                   
                                 <input type="text" name = "search" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
-                         
-
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                        <div class="top-box">

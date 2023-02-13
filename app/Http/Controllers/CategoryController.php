@@ -46,8 +46,8 @@ class CategoryController extends Controller
     public function categoryUpdate(Request $request,$id){  //validate
         $request->validate([
           'category_name'=>'required',
-          'category_price'=>'requird',
-          'category_type'=>'requird',
+          'category_price'=>'required',
+          'category_type'=>'required',
           'category_description'=>'required'
         ]);
 
