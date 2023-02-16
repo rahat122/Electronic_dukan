@@ -45,7 +45,6 @@ class CartController extends Controller
     
             }else{
                 $myCart[$id]['product_quantity']=$myCart[$id]['product_quantity']+1;
-
                 $myCart[$id]['subtotal']=(float)($myCart[$id]['product_price']) * (int)($myCart[$id]['product_quantity']);
                 session()->put('myCart',$myCart);
             }

@@ -65,9 +65,7 @@
                                     <a class="btn btn-danger" href="{{route('delete.cart',$key)}}"><i class="icon-trash icon-large"></i> Delete</a>
                                 </td>
 
-                                 
-
-                                <td class="shoping__cart__item__close">
+                               <td class="shoping__cart__item__close">
                                     
 
                                     <button class="btn btn-danger" type="submit">Update</button>
