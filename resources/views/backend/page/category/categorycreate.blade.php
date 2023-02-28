@@ -10,16 +10,6 @@
         </div>
 
         <div class="form-group">
-            <label for="">Category Price</label>
-            <input type="text" name="category_price" class="form-control" placeholder="Enter Category Price" required >
-        </div>
-
-        <div class="form-group">
-            <label for="">Category Type</label>
-            <input type="text" name="category_type" class="form-control" placeholder="Enter Category Type" required>
-        </div>
-
-        <div class="form-group">
             <label for="">Category Description</label>
             <input type="text" name="category_description" class="form-control" placeholder="Enter Category Description" required>
 

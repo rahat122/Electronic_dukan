@@ -65,6 +65,9 @@ class CartController extends Controller
 
 
     public function upDate(Request $request,$id){
+        $request->validate([
+            'qty'=>'required|min:1'
+        ]);
         $myCart = session()->get('myCart');
         $myCart[$id]["product_quantity"] = $request->qty;
         $myCart[$id]['subtotal']=(float)($myCart[$id]['product_price']) * (int)($myCart[$id]['product_quantity']);

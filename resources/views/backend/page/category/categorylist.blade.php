@@ -6,8 +6,6 @@
     <tr>
       <th scope="col">id</th>
       <th scope="col">category_name</th>
-      <th scope="col">category_price</th>
-      <th scope="col">category_type</th>
       <th scope="col">category_description</th>
       <th scope="col">action</th>
     </tr>
@@ -17,8 +15,6 @@
     <tr>
       <th scope="row">{{$Category->id}}</th>
       <td>{{$Category->category_name}}</td>
-      <td>{{$Category->category_price}}</td>
-      <td>{{$Category->category_type}}</td>
       <td>{{$Category->category_description}}</td>
       <td>
         <a class="btn btn-primary" href="{{route('category.edit',$Category->id)}}">Edit/Update</a>

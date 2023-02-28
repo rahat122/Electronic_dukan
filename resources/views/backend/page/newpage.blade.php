@@ -225,54 +225,44 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales <span>| Today</span></h5>
 
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">Order Name</th>
+                      <th scope="col">Order Email</th>
+                      <th scope="col">Order Phone</th>
+                      <th scope="col">Order Amount</th>
+                      <th scope="col">Order Status</th>
+                      <th scope="col">Order Address</th>
+                      <th scope="col">Order Transaction_id</th>
+                      <th scope="col">Order Currency</th>
+                      <th scope="col">action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($Orders as $Order)
+                    <tr>
+                      <th scope="row">{{$Order->id}}</th>
+                      <td>{{$Order->name}}</td>
+                      <td>{{$Order->email}}</td>
+                      <td>{{$Order->phone}}</td>
+                      <td>{{$Order->amount}}</td>
+                      <td>{{$Order->status}}</td>
+                      <td>{{$Order->address}}</td>
+                      <td>{{$Order->transaction_id}}</td>
+                      <td>{{$Order->crrency}} BDT</td>
+                      <td>
+                        <a href="{{route('order.update',$Order->id)}}" class="btn btn-primary">
+                          Approve
+                        </a>
+                      </td>
+                      
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                {{$Orders->links()}}
 
                 </div>
 

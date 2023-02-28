@@ -54,7 +54,7 @@
                                 <td class="shoping__cart__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" name="qty" value="{{$cart['product_quantity']}}">
+                                            <input type="number" min="1" max="5" name="qty" value="{{$cart['product_quantity']}}">
                                         </div>
                                     </div>
                                 </td>
@@ -108,14 +108,26 @@
                     <h5>Cart Total</h5>
                     <ul>
                          
-                        <li>Total <span>{{array_sum(array_column($carts=session()->get('myCart'),'subtotal'))}}</span></li>
+                        <li>Total <span>{{ session()->get('myCart')? array_sum(array_column($carts=session()->get('myCart'),'subtotal')):0}}</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="{{route('checkout')}}" class="btn btn-primary">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Shoping Cart Section End -->
+
+
+<script>
+    var obj = {};
+    obj.cus_name = $('#customer_name').val();
+    obj.cus_phone = $('#mobile').val();
+    obj.cus_email = $('#email').val();
+    obj.cus_addr1 = $('#address').val();
+    obj.amount = $('#total_amount').val();
+    
+    $('#sslczPayBtn').prop('postdata', obj);
+</script>
 
 @endsection

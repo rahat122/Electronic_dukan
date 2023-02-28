@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -14,8 +15,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+
+        if(request()->route()->getName()=="checkout"){
+            Alert::warning('You are not Customer', 'Log in or Registration as Customer');
+            return route('home');
+        }
+
         if (! $request->expectsJson()) {
-            return route('login');
+            return route('home');
         }
     }
 }

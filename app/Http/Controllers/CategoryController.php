@@ -20,15 +20,11 @@ class CategoryController extends Controller
     public function categorySubmit(Request $request){ //validation
         $request->validate([
             'category_name'=>'required',
-            'category_price'=>'required',
-            'category_type'=>'required',
             'category_description'=>'required'
         ]);
 
         Category::create([
             'category_name'=>$request->category_name,
-            'category_price'=>$request->category_price,
-            'category_type'=>$request->category_type,
             'category_description'=>$request->category_description
       
         ]);
@@ -46,15 +42,13 @@ class CategoryController extends Controller
     public function categoryUpdate(Request $request,$id){  //validate
         $request->validate([
           'category_name'=>'required',
-          'category_price'=>'required',
-          'category_type'=>'required',
+          
           'category_description'=>'required'
         ]);
 
         $Category=Category::find($id)->update([
             'category_name'=>$request->category_name,
-            'category_price'=>$request->category_price,
-            'category_type'=>$request->category_type,
+             
             'category_description'=>$request->category_description
 
         ]);

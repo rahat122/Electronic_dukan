@@ -7,10 +7,9 @@
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
             <div class="top-box">
               <ul class="sociel_link">
-                @if(auth()->user())
-                <li><a href="{{route('cart.details')}}"> <i class="fa fa-shopping-bag"></i><span> Cart({{session()->has('myCart')?count(session()->get('myCart')):0}})</span>
-                  </a></li>
-                @endif
+                
+                <li><a href="{{route('cart.details')}}">Cart({{session()->has('myCart')?count(session()->get('myCart')):0}})</a></li>
+
                 <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
                 <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -64,13 +63,13 @@
                 <div class="top-lef">
                   <form action="{{route('search.bar')}}">
                     <div class="input-group">
-                      <input type="search" style="padding: 10px;" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                      <input type="search" name="search" style="padding: 10px;" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                       <button type="Submit " class="btn btn-primary">search</button>
                     </div>
                   </form>
                 </div>
                 <li class="active"> <a href="{{route('home')}}">Home</a> </li>
-                <li> <a href="about.html">About</a> </li>
+                <li> <a href="{{route('about')}}">About</a> </li>
                 <li> <a href="product.html">product</a> </li>
                 <li> <a href="blog.html"> Blog</a> </li>
                 <li> <a href="contact.html">Contact</a> </li>

@@ -38,6 +38,21 @@
           <span>Brand</span>
         </a>
       </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{route('order.list')}}">
+          <i class="bi bi-grid"></i>
+          <span>Order List</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{route('user.list')}}">
+          <i class="bi bi-grid"></i>
+          <span>User List</span>
+        </a>
+      </li>
     </ul>
 
   </aside>

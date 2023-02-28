@@ -10,7 +10,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "mckenziearts/laravel-notify": "^2.3"
+        "mckenziearts/laravel-notify": "^2.3",
+        "realrashid/sweet-alert": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

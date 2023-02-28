@@ -183,7 +183,6 @@
          <div class="product-bg-white">
          <div class="container">
             <div class="row">
-            @if(auth()->user())
             @foreach($Products as $Product)
             
          
@@ -192,16 +191,16 @@
                   <div class="product-box">
                      <i><img src="{{url('uploads/product/',$Product->product_image)}}"/></i>
                      <h3>{{$Product->product_name}}</h3>
-                     <span>{{$Product->product_price}}</span>
+                     <span>{{$Product->product_price}} BDT</span>
+                     @if($Product->product_quantity>0)
                      <a href="{{route('add.cart.page',$Product->id)}}" class="btn btn-primary">Add To Cart</a>
+                     @else
+                     <p>Stock Out</p>
+                     @endif
                   </div>
                </div>
             @endforeach
-            @endif
-              
-              
-              
-               
+
                </div>
             </div>
          </div>
