@@ -27,6 +27,7 @@ class SslCommerzPaymentController extends Controller
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
         
+        
 
         $post_data = array();
         $post_data['total_amount'] = $request->total_payment; # You cant not pay less than 10
@@ -202,10 +203,23 @@ class SslCommerzPaymentController extends Controller
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
             echo "Transaction is successfully Completed";
+            dd($request->session);
+
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
+        // dd(session()->get("myCart"));
+
+        foreach(session()->get("myCart") as $key=>$product){
+            
+            $dbProduct=Product::find($key);
+            $dbProduct->update(
+                [
+                    "product_quantity" => (int) $dbProduct->product_quantity - $product['product_quantity']
+                ] );
+        }
+        session()->get("myCart");
         
         session()->forget('myCart');
         Alert::success('Payment','Payment Successfully');

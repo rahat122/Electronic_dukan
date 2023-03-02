@@ -58,5 +58,24 @@ class HomeController extends Controller
     }
 
 
+    public function userProfile(){
+        return view('frontend.page.userprofile.userprofile');
+    }
+
+
+    public function profileEdit(){
+        $User=User::find();
+        return view('frontend.page.userprofile.userprofile');
+    }
+
+    public function profileUpdate(Request $request){
+        
+        $User=User::find(auth()->user()->id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email
+        ]);
+        return redirect()->back();
+    }
+
 
 }

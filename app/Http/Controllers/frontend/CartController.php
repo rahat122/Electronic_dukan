@@ -69,6 +69,13 @@ class CartController extends Controller
             'qty'=>'required|min:1'
         ]);
         $myCart = session()->get('myCart');
+
+        $product = Product::find($id);
+
+        if($product->product_quantity < $request->qty){
+            notify()->warning("Stock Out , Product Available $product->product_quantity");
+            return redirect()->back();
+        }
         $myCart[$id]["product_quantity"] = $request->qty;
         $myCart[$id]['subtotal']=(float)($myCart[$id]['product_price']) * (int)($myCart[$id]['product_quantity']);
         // dd( $myCart[$id]["product_quantity"]);

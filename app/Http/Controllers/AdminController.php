@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,11 @@ class AdminController extends Controller
      }
 
      public function newPage(){
+      $totalOrder=Order::get()->count();
+      $totalcustomer=User::get()->count();
       $Orders=Order::paginate(5);
       // dd($Orders);
-        return view('backend.page.newpage',compact('Orders'));
+        return view('backend.page.newpage',compact('Orders', 'totalOrder','totalcustomer'));
      }
 
      public function orderEdit($id){
@@ -40,7 +43,8 @@ class AdminController extends Controller
 
 
      public function orderList(){
-      $Orders=Order::orderBy('id', 'DESC')->paginate(5);
+      
+      $Orders=Order::orderBy('id', 'DESC')->paginate(10);
 
       return view('backend.page.Order.OrderList',compact('Orders'));
      }

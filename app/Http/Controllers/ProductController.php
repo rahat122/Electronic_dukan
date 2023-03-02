@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function productList(){
+        
         if(\request()->has('search')){
             $search_key=request()->search;
             $Products=Product::where('product_name','LIKE','%'.$search_key.'%')->get();

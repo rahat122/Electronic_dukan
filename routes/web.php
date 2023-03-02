@@ -61,6 +61,11 @@ Route::post('/registration-front',[HomeController::class,'registrationFront'])->
 Route::get('/logout-fron',[HomeController::class,'logoutFront'])->name('logout.front');
 
 
+Route::get('/user-profile',[HomeController::class,'userProfile'])->name('user.profile');
+Route::get('/profile-edit',[HomeController::class,'profileEdit'])->name('profile.edit');
+Route::put('/profile-update',[HomeController::class,'profileUpdate'])->name('profile.update');
+
+
 
 Route::get('/registration',[AuthController::class,'registrationForm'])->name('registration.form');
 Route::post('/registration-submit',[AuthController::class,'registrationSubmit'])->name('registration.submit');
@@ -90,7 +95,7 @@ Route::get('/about',[HomeController::class,'About'])->name('about');
 
 
 
-Route::group(["middleware"=>"CheckAdmin"],function(){
+Route::middleware('CheckAdmin')->group (function(){
 
     Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 

@@ -34,7 +34,7 @@
 
               @auth
               <div class="d-flex pt-2">
-              <button class="btn btn-success mr-2">{{auth()->user()->name}}</button>
+              <a class="btn btn-success" href="{{route('user.profile')}}">{{auth()->user()->name}}</a>
               <button class="btn btn-success"><a href="{{route('logout.front')}}">Log Out</a></button>
               </div>
               @endauth
