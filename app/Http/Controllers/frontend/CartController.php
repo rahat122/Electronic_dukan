@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -73,7 +74,12 @@ class CartController extends Controller
         $product = Product::find($id);
 
         if($product->product_quantity < $request->qty){
-            notify()->warning("Stock Out , Product Available $product->product_quantity");
+            Alert::warning("Stock Out" , "Product Available $product->product_quantity");
+            return redirect()->back();
+        }
+
+        if($request->qty < 1){
+            Alert::warning("Cart Error" , "Cart 1 or More Product");
             return redirect()->back();
         }
         $myCart[$id]["product_quantity"] = $request->qty;

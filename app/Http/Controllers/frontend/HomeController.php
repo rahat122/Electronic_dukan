@@ -63,19 +63,22 @@ class HomeController extends Controller
     }
 
 
-    public function profileEdit(){
-        $User=User::find();
-        return view('frontend.page.userprofile.userprofile');
-    }
+     
 
     public function profileUpdate(Request $request){
-        
+        $filename=auth()->user()->image;
+        if($request->hasFile('image')){
+            $filename='ELECTRONIC_DUKAN' . '.' . date('Ymdmsis') . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads/user',$filename);
+        }
         $User=User::find(auth()->user()->id)->update([
             'name'=>$request->name,
-            'email'=>$request->email
+            'email'=>$request->email,
+            'image'=>$filename
         ]);
         return redirect()->back();
     }
 
+    
 
 }
